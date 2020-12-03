@@ -1,0 +1,66 @@
+<div class="toasts">
+    <form [formGroup] = "formForInput">
+        <div class="titles">
+            <mat-form-field class="example-full-width">
+                <mat-label>Title</mat-label>
+                <input matInput placeholder="Ex. Times" name="title" [formControl]="titleControl">
+            </mat-form-field>
+    
+            <mat-form-field class="example-full-width">
+                <mat-label>Content</mat-label>
+                <input matInput placeholder="Ex. Main Text" name="content" [formControl]="contentControl">
+            </mat-form-field>
+        </div>
+    </form>
+    <div class="firstRadio">
+        <mat-radio-group class="d-flex flex-column" [formControl]="selectControl">
+            <mat-radio-button class="example-radio-button" [value]="1">
+                Success
+            </mat-radio-button>
+            <mat-radio-button class="example-radio-button" [value]="0">
+                Error
+            </mat-radio-button>
+        </mat-radio-group>
+    </div>
+    <div class="checkboxes">
+        <div class="custom-control custom-switch">
+            <input type="checkbox" class="custom-control-input" id="customSwitches" [formControl]="showTitleControl">
+            <label class="custom-control-label" for="customSwitches">ShowTitle</label>
+        </div>
+        <div class="custom-control custom-switch">
+            <input type="checkbox" class="custom-control-input" id="customSwitches1" [formControl]="hasCloseBtnControl">
+            <label class="custom-control-label" for="customSwitches1">HasCloseButton</label>
+        </div>
+        <div class="custom-control custom-switch">
+            <input type="checkbox" class="custom-control-input" id="customSwitches2" [formControl]="showDurationControl">
+            <label class="custom-control-label" for="customSwitches2">ShowDuration</label>
+        </div>
+    </div>
+    <div class="duration">
+        <label class="">Duration (0 for no close)</label>
+        <mat-slider [(ngModel)]="timeDefaultValue"></mat-slider>
+        <span>{{timeDefaultValue}} sec</span>
+    </div>
+    <div class="secondRadio">
+        <section class="positions d-flex">
+            <div class="d-flex flex-column">
+              <label class="font-weight-bolder">Vertical Position</label>
+              <mat-radio-group class="d-flex flex-column" [formControl]="verticalControl">
+                <mat-radio-button [value]="verTop" class="radio">Top</mat-radio-button>
+                <mat-radio-button [value]="verCenter" class="radio">Center</mat-radio-button>
+                <mat-radio-button [value]="verBottom" class="radio">Bottom</mat-radio-button>
+              </mat-radio-group>
+            </div>
+            <div class="d-flex flex-column ml-5">
+              <label class="font-weight-bolder">Horizontal Position</label>
+              <mat-radio-group class="d-flex flex-column" [formControl]="horizontalControl">
+                <mat-radio-button [value]="horTop" class="">Start</mat-radio-button>
+                <mat-radio-button [value]="horCenter" class="">Center</mat-radio-button>
+                <mat-radio-button [value]="horBottom" class="">End</mat-radio-button>
+              </mat-radio-group>
+            </div>
+          </section>
+    </div>
+    
+    <button mat-raised-button color="accent" class="createToast" type="submit" [disabled]="formForInput.invalid" (click)="createToast()">Create</button>
+</div>
